@@ -1,0 +1,74 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Checkout{% endblock title %}
+
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        {% if cart_items %}
+        <div class="col-sm-8">
+            <h4 class="mb-4">Shipping Address</h4>
+            {% for ad in add %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5>{{ ad.name }}</h5>
+                    <p>{{ ad.locality }}, {{ ad.city }}, {{ ad.state }} - {{ ad.zipcode }}</p>
+                    <p>Mobile: {{ ad.mobile }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <h4 class="mb-4 mt-5">Review Items</h4>
+            {% for item in cart_items %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ item.product.product_image.url }}" class="img-fluid rounded-start" alt="{{ item.product.title }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.product.title }}</h5>
+                            <p class="card-text">Quantity: {{ item.quantity }}</p>
+                            <p class="fw-bold">Price: Rs. {{ item.product.discounted_price }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Order Summary</h5>
+                    <p class="card-text">
+                        <span class="float-start">Items Total</span>
+                        <span class="float-end">Rs. {{ amount }}</span>
+                    </p>
+                    <br>
+                    <p class="card-text">
+                        <span class="float-start">Delivery Charges</span>
+                        <span class="float-end">Rs. 40.00</span>
+                    </p>
+                    <hr>
+                    <p class="card-text fw-bold">
+                        <span class="float-start">Total Amount</span>
+                        <span class="float-end">Rs. {{ totalamount }}</span>
+                    </p>
+                    <div class="text-center mt-4">
+                        <form action="{% url 'payment' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-warning">Proceed to Payment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12 text-center">
+            <h3>Your cart is empty!</h3>
+            <a href="{% url 'home' %}" class="btn btn-primary mt-3">Continue Shopping</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock main-content %}

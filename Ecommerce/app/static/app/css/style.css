@@ -1,0 +1,22 @@
+.product-box {
+    background: #f8f9fa;              /* Light weight background */
+    border: 1px solid #e3e6ea;        /* Light border */                 /* Sharp corners */         /* Black border */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: box-shadow 0.2s;
+}
+.product-box img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #e3e6ea; /* Light border around each image */
+    border-radius: 0;          /* Sharp corners for images */
+    padding: 4px;              /* Optional: space between image and border */
+    background: #fff;          /* Optional: white background inside border */
+}
+.product-box:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1); /* Slightly larger shadow on hover */
+}
+.product-name {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #636362;
+}

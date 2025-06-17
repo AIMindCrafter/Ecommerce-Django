@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Order Summary</h3>
+                    <p class="card-text">
+                        <span class="float-start">Items Total</span>
+                        <span class="float-end">Rs. {{ amount }}</span>
+                    </p>
+                    <p class="card-text">
+                        <span class="float-start">Delivery Charges</span>
+                        <span class="float-end">Rs. 40.00</span>
+                    </p>
+                    <hr>
+                    <p class="card-text fw-bold">
+                        <span class="float-start">Total Amount</span>
+                        <span class="float-end">Rs. {{ totalamount }}</span>
+                    </p>
+                    {% if success %}
+                        <div class="alert alert-success text-center mt-4">
+                            Payment successful! Your order has been placed.<br>
+                            <a href="/" class="btn btn-primary mt-3">Back to Home</a>
+                        </div>
+                    {% else %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success w-100 mt-4">Proceed Payment</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

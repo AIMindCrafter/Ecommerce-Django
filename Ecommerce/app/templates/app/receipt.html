@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Payment Receipt</h3>
+                    <p><strong>Date:</strong> {{ date }}</p>
+                    <p><strong>Customer:</strong> {{ user.get_full_name }} ({{ user.email }})</p>
+                    <hr>
+                    <h5>Order Details:</h5>
+                    <ul>
+                        {% for item in items %}
+                            {% if item.product %}
+                                <li>{{ item.product.title }} (x{{ item.quantity }}) - Rs. {{ item.product.discounted_price }} each</li>
+                            {% else %}
+                                <li>{{ item.title }} (x{{ item.quantity }}) - Rs. {{ item.discounted_price }} each</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    <hr>
+                    <p><strong>Items Total:</strong> Rs. {{ amount }}</p>
+                    <p><strong>Delivery Charges:</strong> Rs. 40.00</p>
+                    <p class="fw-bold"><strong>Total Paid:</strong> Rs. {{ totalamount }}</p>
+                    {% if error %}
+                        <div class="alert alert-warning text-center mt-4">{{ error }}</div>
+                    {% else %}
+                        <div class="alert alert-success text-center mt-4">
+                            Thank you for your purchase!
+                            <a href="/" class="btn btn-primary mt-3">Back to Home</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
