@@ -94,4 +94,15 @@ The workflow `.github/workflows/django-ci.yml` runs on push/PR:
 
 ## License
 
+
 This project is for educational and portfolio purposes. Use freely and adapt to your needs.
+<img width="1920" height="926" alt="1" src="https://github.com/user-attachments/assets/1ca95f30-6b07-4613-86d9-ad8d7dcb4559" />
+
+
+<img width="1920" height="924" alt="2" src="https://github.com/user-attachments/assets/7093b5b5-23b7-4975-b823-a9484cc49347" />
+
+
+<img width="1920" height="939" alt="3" src="https://github.com/user-attachments/assets/0002732c-7d35-4cbb-851b-5a6222ad9f16" />
+
+
+
